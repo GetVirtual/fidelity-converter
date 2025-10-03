@@ -1,5 +1,5 @@
 # Turn on Debug
-$DebugPreference = "Continue"
+#$DebugPreference = "Continue"
 
 # open file in script location
 $scriptpath = Split-Path -Parent $MyInvocation.MyCommand.Definition
@@ -8,14 +8,14 @@ $scriptpath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 [int]$i = 0
 
 # Date of last sync to compare which lines are relevant, Format DD.MM.YYYY, MANUAL OVERRIDE
-[datetime]$lastsync = Get-Date ("01.06.1990")
+# [datetime]$lastsync = Get-Date ("01.06.1990")
 
 # Import lastrun from file
-#[string]$lastrunfilecontent = Get-Content (Join-Path -Path $scriptpath -ChildPath "lastrun.txt")
-#[datetime]$lastsync = [datetime]::parseexact($lastrunfilecontent, 'dd.MM.yyyy', $null)
+[string]$lastrunfilecontent = Get-Content (Join-Path -Path $scriptpath -ChildPath "lastrun.txt")
+[datetime]$lastsync = [datetime]::parseexact($lastrunfilecontent, 'dd.MM.yyyy', $null)
 
 # import CSV
-$CSVFile = Join-Path -Path $scriptpath -ChildPath "View open lots.csv"
+$CSVFile = Join-Path -Path $scriptpath -ChildPath "..\View open lots.csv"
 $CSV = Import-Csv $CSVFile
 
 # remove $QIFFILE if it exists

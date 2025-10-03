@@ -15,7 +15,7 @@ $scriptpath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 [datetime]$lastsync = [datetime]::parseexact($lastrunfilecontent, 'dd.MM.yyyy', $null)
 
 # import CSV
-$CSVFile = Join-Path -Path $scriptpath -ChildPath "View open lots.csv"
+$CSVFile = Join-Path -Path $scriptpath -ChildPath "..\View open lots.csv"
 $CSV = Import-Csv $CSVFile
 
 # remove $QIFFILE if it exists
